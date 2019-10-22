@@ -11,7 +11,6 @@ module.exports = {
     console.log(`Building Express project`)
     await system.run(`express .`)
 
-    // filesystem.move('./../templates/express/Dockerfile', filesystem.path())
     return
   }
 }

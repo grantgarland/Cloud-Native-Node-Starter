@@ -20,15 +20,7 @@ npm install cloud-native-node-starter -g
 ## Usage
 
 ```shell
-cloud-native-node-starter <your-app-name>
-```
-
-### Examples
-
-#### Never index a directory
-
-```shell
-cloud-native-node-starter ~/Projects
+cloud-native-node-starter create <your-app-name>
 ```
 
 ## Publishing to NPM
