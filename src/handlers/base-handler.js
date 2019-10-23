@@ -1,19 +1,12 @@
-const fs = require('fs')
 const path = require('path')
 const shell = require('shelljs')
-const { system } = require('gluegun')
 const express_handler = require('./express-handler')
-
-const helmFile = './get_helm.sh'
 
 module.exports = {
   async handle(request, toolbox) {
     /** Destructure out required objects from request and toolbox */
     const { nameOfProject } = request
-    const {
-      filesystem,
-      print: { success }
-    } = toolbox
+    const { filesystem, print } = toolbox
 
     /** Build a project directory */
     const userFolder = process.cwd()
@@ -30,7 +23,6 @@ module.exports = {
       'curl https://raw.githubusercontent.com/helm/helm/master/scripts/get > get_helm.sh'
     )
     await shell.exec('chmod 700 get_helm.sh')
-    // await filesystem.write('get_helm.sh', helmFile)
     await shell.exec('./get_helm.sh')
     toolbox.print.success('Successfully downloaded Helm')
 

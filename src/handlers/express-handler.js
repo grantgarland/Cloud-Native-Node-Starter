@@ -1,4 +1,4 @@
-const path = require('path')
+const fs = require('fs')
 const { system } = require('gluegun')
 
 module.exports = {
@@ -10,7 +10,8 @@ module.exports = {
     /** Build Express project */
     console.log(`Building Express project`)
     await system.run(`express .`)
-
-    return
+    await system.run(
+      `npm install @cloudnative/health-connect appmetrics-prometheus`
+    )
   }
 }
