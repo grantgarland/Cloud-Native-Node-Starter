@@ -25,9 +25,7 @@ module.exports = {
 
     success(`
         Done! Generated new cloud native Node.js project: ${nameOfProject}.
-        Next:
-          $ cd ${nameOfProject}
-          $ npm install
+        App viewable at: localhost:3000
     `)
   }
 }
