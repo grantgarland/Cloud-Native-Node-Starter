@@ -27,19 +27,20 @@ module.exports = {
 
     /** Containerize project */
     try {
-      print.info('Packaging application into Docker container...')
+      print.info('Packaging application for Docker...')
       await container_handler.handle(request, toolbox)
       print.success('Successfully packaged application for Docker.')
     } catch (err) {
-      print.error('Error creating packaging project for Docker.')
+      print.error(
+        'Error packaging project for Docker. Is your Docker daemon running?'
+      )
       throw new Error()
     }
 
-    /** Prepare for Kubernetes */
+    /** Prepare project for Kubernetes */
     try {
-      print.info('Preparing project for orchestration via Kubernetes')
+      print.info('Preparing project for Kubernetes orchestration...')
       await kubernetes_handler.handle(request, toolbox)
-      print.info('Successfully packaged application for Kubernetes')
     } catch (err) {
       print.error('Error creating packaging project for Kubernetes')
       throw new Error()

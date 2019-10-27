@@ -1,4 +1,4 @@
-const base_handler = require('../handlers/base-handler')
+const create_handler = require('../handlers/create-handler')
 
 module.exports = {
   name: 'create',
@@ -21,11 +21,12 @@ module.exports = {
 
     const request = { nameOfProject }
 
-    await base_handler.handle(request, toolbox)
+    await create_handler.handle(request, toolbox)
 
     success(`
         Done! Generated new cloud native Node.js project: ${nameOfProject}.
-        App viewable at: localhost:3000
+        Run the following command to deploy and view app on port 3000:\n
+        kubectl port-forward (kubectl get pods | grep "^nodeserver" | cut -d " " -f1) 3000:3000
     `)
   }
 }
