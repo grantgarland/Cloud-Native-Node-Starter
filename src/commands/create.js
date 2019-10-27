@@ -25,8 +25,9 @@ module.exports = {
 
     success(`
         Done! Generated new cloud native Node.js project: ${nameOfProject}.
-        Run the following command to deploy and view app on port 3000:\n
-        kubectl port-forward (kubectl get pods | grep "^nodeserver" | cut -d " " -f1) 3000:3000
+        Run the following command to deploy and view your app from Kubernetes:\n
+        
+        "cloud-native-node-starter run"
     `)
   }
 }

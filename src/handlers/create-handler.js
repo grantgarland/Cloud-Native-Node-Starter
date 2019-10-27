@@ -2,6 +2,7 @@ const path = require('path')
 const express_handler = require('./express-handler')
 const container_handler = require('./container-handler')
 const kubernetes_handler = require('./kubernetes-handler')
+const monitoring_handler = require('./monitoring-handler')
 
 module.exports = {
   async handle(request, toolbox) {
@@ -21,7 +22,7 @@ module.exports = {
       await express_handler.handle(request, toolbox)
       print.success('Successfully created Express project.')
     } catch (err) {
-      print.error('Error creating Express project')
+      print.error('Error creating Express project.')
       throw new Error()
     }
 
@@ -42,10 +43,20 @@ module.exports = {
       print.info('Preparing project for Kubernetes orchestration...')
       await kubernetes_handler.handle(request, toolbox)
     } catch (err) {
-      print.error('Error creating packaging project for Kubernetes')
+      print.error('Error creating packaging project for Kubernetes.')
       throw new Error()
     }
 
+    /** Add monitoring to Kubernetes cluster */
+    try {
+      print.info('Adding monitoring stack inside Kubernetes cluster')
+      await monitoring_handler.handle(request, toolbox)
+      print.success(
+        `Successfully installed Prometheus and Grafana into Kubernetes pod.`
+      )
+    } catch (err) {
+      print.error('Error adding monitoring stack to cluster.')
+    }
     return
   }
 }
