@@ -20,7 +20,7 @@ module.exports = {
       `helm install stable/grafana --name grafana --namespace grafana`
     )
     await shell.exec(
-      'helm install stable/prometheus --name prometheus --namespace prometheus'
+      'helm install stable/prometheus --set adminPassword=admin --name prometheus --namespace prometheus'
     )
     await shell.exec(
       `export PROM_POD_NAME=$(kubectl get pods --namespace prometheus -l "app=prometheus,component=server" -o jsonpath="{.items[0].metadata.name}")`

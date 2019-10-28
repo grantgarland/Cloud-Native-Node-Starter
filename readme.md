@@ -1,15 +1,14 @@
 <div align=center>
 <h1 style="border:0">Cloud Native Node Starter</h1>
-Builds a cloud native Node.js boilerplate application in minutes, complete with monitoring, orchestration, and tracing 
+Creates a cloud native Node.js boilerplate application in minutes, complete with monitoring and orchestration
 </div>
 
 ## Required software
 
-I would recommend using Homebrew to install all other dependencies (Node, Docker, etc.)
-[Homebrew](https://brew.sh/)
-[Docker Desktop](https://www.docker.com/products/docker-desktop)
-[Node.js](https://nodejs.org/en/download/)
-[Docker](https://docs.docker.com/v17.09/engine/installation/)
+I would recommend using Homebrew to install the following dependencies. Note, Kubernetes must be enabled inside Docker Desktop
+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop)
+- [Node.js 8 or later](https://nodejs.org/en/download/)
 
 ## Installation
 
@@ -19,21 +18,16 @@ npm install cloud-native-node-starter -g
 
 ## Usage
 
+Create new project
+
 ```shell
-cloud-native-node-starter create <your-app-name>
+cloud-native-node-starter create
 ```
 
-## Publishing to NPM
-
-To package your CLI up for NPM, do this:
+Monitor project from Grafana
 
 ```shell
-$ npm login
-$ npm whoami
-$ npm lint
-$ npm test
-(if typescript, run `npm run build` here)
-$ npm publish
+cloud-native-node-starter run
 ```
 
 ### License

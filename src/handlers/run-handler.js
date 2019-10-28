@@ -1,13 +1,11 @@
+const shell = require('shelljs')
 module.exports = {
   async handle(request, toolbox) {
-    const { print, system } = toolbox
+    const { print } = toolbox
 
-    print.info('Forwarding servers to local ports ')
-    await system.run(
-      `kubectl --namespace prometheus port-forward $PROM_POD_NAME 9090`
-    )
-    await system.run(
-      `kubectl --namespace grafana port-forward $GRAFANA_POD_NAME 3000`
+    print.info('Exposing Kubernetes cluster on local port...')
+    await shell.exec(
+      `kubectl --namespace grafana port-forward $(kubectl get pods --namespace grafana -l "app=grafana" -o jsonpath="{.items[0].metadata.name}") 3000`
     )
 
     return
