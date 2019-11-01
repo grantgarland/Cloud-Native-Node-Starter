@@ -17,26 +17,26 @@ module.exports = {
     process.chdir(appFolder)
 
     /** Create Express project */
-    try {
-      print.info('Creating Express project. This may take a minute...')
-      await express_handler.handle(request, toolbox)
-      print.success('Successfully created Express project.')
-    } catch (err) {
-      print.error('Error creating Express project.')
-      throw new Error()
-    }
+    // try {
+    //   print.info('Creating Express project. This may take a minute...')
+    //   await express_handler.handle(request, toolbox)
+    //   print.success('Successfully created Express project.')
+    // } catch (err) {
+    //   print.error('Error creating Express project.')
+    //   throw new Error()
+    // }
 
-    /** Containerize project */
-    try {
-      print.info('Packaging application for Docker...')
-      await container_handler.handle(request, toolbox)
-      print.success('Successfully packaged application for Docker.')
-    } catch (err) {
-      print.error(
-        'Error packaging project for Docker. Is your Docker daemon running?'
-      )
-      throw new Error()
-    }
+    // /** Containerize project */
+    // try {
+    //   print.info('Packaging application for Docker...')
+    //   await container_handler.handle(request, toolbox)
+    //   print.success('Successfully packaged application for Docker.')
+    // } catch (err) {
+    //   print.error(
+    //     'Error packaging project for Docker. Is your Docker daemon running?'
+    //   )
+    //   throw new Error()
+    // }
 
     /** Prepare project for Kubernetes */
     try {
@@ -52,7 +52,7 @@ module.exports = {
       print.info('Adding monitoring stack inside Kubernetes cluster')
       await monitoring_handler.handle(request, toolbox)
       print.success(
-        `Successfully installed Prometheus and Grafana into Kubernetes pod.`
+        `Successfully installed Prometheus and Grafana into Kubernetes cluseter.`
       )
     } catch (err) {
       print.error('Error adding monitoring stack to cluster.')

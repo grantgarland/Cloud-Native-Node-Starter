@@ -1,6 +1,6 @@
 {
   "name": "cloud-native-node-starter",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A cloud native boilerplate Node.js project builder, complete with monitoring and orchestration",
   "private": false,
   "bin": {

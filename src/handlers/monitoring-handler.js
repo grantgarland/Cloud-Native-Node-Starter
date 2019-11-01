@@ -17,10 +17,15 @@ module.exports = {
       await system.run(`helm del --purge prometheus`)
     }
     await shell.exec(
-      `helm install stable/grafana --name grafana --namespace grafana`
+      'helm install stable/prometheus \
+      --name prometheus \
+      --namespace prometheus'
     )
     await shell.exec(
-      'helm install stable/prometheus --set adminPassword=admin --name prometheus --namespace prometheus'
+      `helm install stable/grafana \
+      --set adminPassword=admin \
+      --name grafana \
+      --namespace grafana`
     )
     await shell.exec(
       `export PROM_POD_NAME=$(kubectl get pods --namespace prometheus -l "app=prometheus,component=server" -o jsonpath="{.items[0].metadata.name}")`
