@@ -24,7 +24,7 @@ Create new project
 cloud-native-node-starter create
 ```
 
-Monitor project from Grafana
+View project from Express, Prometheus, or Grafana
 
 ```shell
 cloud-native-node-starter run

@@ -1,7 +1,8 @@
 {
   "name": "cloud-native-node-starter",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A cloud native boilerplate Node.js project builder, complete with monitoring and orchestration",
+  "repository": "https://github.com/grantgarland/Cloud-Native-Node-Starter",
   "private": false,
   "bin": {
     "cloud-native-node-starter": "bin/cloud-native-node-starter"

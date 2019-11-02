@@ -27,12 +27,6 @@ module.exports = {
       --name grafana \
       --namespace grafana`
     )
-    await shell.exec(
-      `export PROM_POD_NAME=$(kubectl get pods --namespace prometheus -l "app=prometheus,component=server" -o jsonpath="{.items[0].metadata.name}")`
-    )
-    await shell.exec(
-      `GRAFANA_POD_NAME=$(kubectl get pods --namespace grafana -l "app=grafana" -o jsonpath="{.items[0].metadata.name}")`
-    )
 
     return
   }

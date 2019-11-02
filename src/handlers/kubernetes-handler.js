@@ -8,7 +8,7 @@ module.exports = {
       'curl https://raw.githubusercontent.com/helm/helm/master/scripts/get > get_helm.sh'
     )
     await system.run('chmod 700 get_helm.sh && ./get_helm.sh')
-    await system.run(
+    await shell.exec(
       `helm init && helm repo add stable https://kubernetes-charts.storage.googleapis.com`
     )
     await system.run(`rm ./get_helm.sh`)
@@ -32,11 +32,7 @@ module.exports = {
     const pod_name = await system.run(
       `kubectl get pods | grep "^nodeserver" | cut -d " " -f1`
     )
-    print.success(`Successfully deployed app into Kubernetes pod ${pod_name}`)
-    print.success(`
-    Run the following command to deploy app into kube cluster viewable on port 3000:\n
-    kubectl port-forward $(kubectl get pods | grep "^nodeserver" | cut -d " " -f1) 3000:3000
-    `)
+    print.success(`Successfully deployed app into Kubernetes pod: ${pod_name}`)
 
     return
   }

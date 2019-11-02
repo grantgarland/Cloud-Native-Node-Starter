@@ -25,7 +25,7 @@ module.exports = {
 
     success(`
         Done! Generated new cloud native Node.js project: ${nameOfProject}.
-        Run the following command to deploy and view your app from Kubernetes:\n
+        Run the following command to view your app running inside Kubernetes:\n
         
         "cloud-native-node-starter run"
     `)
